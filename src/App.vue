@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <nav-header>众彩物流</nav-header>
+  <nav-header>众彩物流</nav-header>
     <router-view/>
   </div>
 </template>
 
 <script>
-  import NavHeader from "./components/header/navheader"
+import NavHeader from "@/components/header/navheader"
 export default {
   name: 'App',
   components:{

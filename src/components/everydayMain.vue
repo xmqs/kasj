@@ -1,7 +1,14 @@
 <template>
-  <div>
+  <div class="edm">
+    <div class="changeTime">
+      更新日期：2018年5月14日
+    </div>
+    <div class="changePage">
+      <router-link to="dailyPrice" >每日价格</router-link>
+      <router-link to="everydayMain" class="page_active" >每日一品</router-link>
+    </div>
     <ul class="NewsList">
-      <li>
+      <li @click="toNews('123')">
         <div class="NewLeft">
           <h2>
             雪停了，菜价也降了
@@ -49,11 +56,61 @@
 
 <script>
     export default {
-        name: "everydayMain"
+        name: "everydayMain",
+      methods:{
+        toNews(id){
+          this.$router.push({ path: `/zcwl/NewsDetail/${id}`});
+        }
+      }
     }
 </script>
 
 <style scoped>
+  .edm{
+    margin-top: 96px;
+  }
+  .content{
+    background-color: #fff;
+  }
+  .changePage{
+    text-align: center;
+    width: 100%;
+    border-bottom:1px solid #EEEEEE ;
+    background: #fff;
+    border-bottom: 20px solid #F5F5F5;
+  }
+  .changePage a{
+    float: left;
+    text-align: center;
+    width: 50%;
+    border-bottom: 5px solid #fff;
+    line-height: 88px;
+    font-size: 30px;
+    color: #333;
+  }
+  .changePage a.page_active{
+    color: #4D7BFE;
+    border-bottom: 5px solid #4D7BFE;
+  }
+  .changePage::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+  /*主题*/
+  .content{
+    border-top: 20px solid #F5F5F5;
+  }
+
+  .changeTime{
+    height:72px;
+    background:rgba(255,247,234,1);
+    font-size:28px;
+    font-family:PingFangSC-Regular;
+    color:rgba(255,185,74,1);
+    line-height:72px;
+    padding-left: 32px;
+  }
   .NewsList{
     padding: 0 20px;
   }

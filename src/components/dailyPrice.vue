@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <div class="dailyPrice">
+    <div class="changeTime">
+      更新日期：2018年5月14日
+    </div>
+    <div class="changePage">
+      <router-link to="dailyPrice" class="page_active" >每日价格</router-link>
+      <router-link to="everydayMain" >每日一品</router-link>
+    </div>
     <ul class="PriceList">
       <li class="PriceHeader">
         <span>品种</span>
@@ -8,7 +15,7 @@
         <span>最高价</span>
         <span>平均价</span>
       </li>
-      <li>
+      <li @click="toChart('青菜')">
         <span class="Pname">青菜</span>
         <span class="Pplace">南京</span>
         <span class="Lprice">4.4元</span>
@@ -41,7 +48,6 @@
 </template>
 
 <script>
-
   export default {
     name: "destination",
     data(){
@@ -52,12 +58,61 @@
 
     },
     methods:{
-
+      toChart(id){
+        this.$router.push({ path: `/zcwl/priceChart/${id}`});
+      }
     }
   }
 </script>
 
 <style scoped>
+
+  .content{
+    background-color: #fff;
+  }
+  .changePage{
+    text-align: center;
+    width: 100%;
+    border-bottom:1px solid #EEEEEE ;
+    background: #fff;
+    border-bottom: 20px solid #F5F5F5;
+  }
+  .changePage a{
+    float: left;
+    text-align: center;
+    width: 50%;
+    border-bottom: 5px solid #fff;
+    line-height: 88px;
+    font-size: 30px;
+    color: #333;
+  }
+  .changePage a.page_active{
+    color: #4D7BFE;
+    border-bottom: 5px solid #4D7BFE;
+  }
+  .changePage::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+  /*主题*/
+  .content{
+    border-top: 20px solid #F5F5F5;
+  }
+
+  .changeTime{
+    height:72px;
+    background:rgba(255,247,234,1);
+    font-size:28px;
+    font-family:PingFangSC-Regular;
+    color:rgba(255,185,74,1);
+    line-height:72px;
+    padding-left: 32px;
+  }
+
+  .dailyPrice{
+    margin-top: 96px;
+  }
   input::-webkit-input-placeholder{
     color:#ccc;
   }
