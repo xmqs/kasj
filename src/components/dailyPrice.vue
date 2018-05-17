@@ -43,6 +43,174 @@
         <span class="Tprice">6元</span>
         <span class="Aprice">5.2元</span>
       </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
+      <li>
+        <span class="Pname">青菜</span>
+        <span class="Pplace">南京</span>
+        <span class="Lprice">4.4元</span>
+        <span class="Tprice">6元</span>
+        <span class="Aprice">5.2元</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -121,6 +289,8 @@
   }
   input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
     color:#ccc;
+  }
+  .PriceList{
   }
   .PriceList li{
     border-bottom: 1px solid #eee;
