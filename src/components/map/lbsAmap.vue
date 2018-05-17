@@ -1,18 +1,20 @@
 <template>
   <div class="amap-page-container">
-    <!--<el-amap vid="amapDemo"  :center="center" :amap-manager="amapManager" :zoom="zoom" :events="events" class="amap-demo">
-    </el-amap>-->
     <el-amap vid="amapDemo" :zoom="zoom" :center="center" :amap-manager="amapManager" :events="events" class="amap-demo">
     </el-amap>
     {{center}}
-    <input type="text">
-    <button>搜索</button>
-    <div id="panel" ref="">
+    <input type="text" v-model="searchP">
+    <button @click="search">搜索</button>
+    <div id="panel">
+    </div>
+    <div id="result">
+
     </div>
   </div>
 </template>
 
 <script>
+  import $ from "jquery"
   import VueAMap from 'vue-amap'
     export default {
       name: "lbsAmap",
@@ -21,6 +23,7 @@
           zoom: 12,
           amapManager:{},
           center:[118.789386,32.029029],
+          searchP:"",
           //markers:[],
           extensions:"",
           events: {
@@ -48,8 +51,7 @@
                 extensions:"all",
                 panel:"panel"
               });
-              // 根据起终点经纬度规划驾车导航路线
-              console.log(this.panel);
+              // 根据起终点经纬度规划驾车导航路线 目前以南京禄口机场为终点
               driving.search(new AMap.LngLat(this.fromLocation[0], this.fromLocation[1]), new AMap.LngLat(118.873171, 31.731089 ));
 
             }
@@ -75,6 +77,21 @@
       }*/
         this.amapManager = new VueAMap.AMapManager();
 
+      },
+
+      methods:{
+        search(){
+          var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+            pageSize: 5,
+            pageIndex: 1,
+            map: this.amapManager.getMap(),
+            panel: "result"
+          });
+          //关键字查询
+          placeSearch.search(this.searchP, function(status, result) {
+            //result可查看所有查询结果
+          });
+        }
       }
     }
 </script>
