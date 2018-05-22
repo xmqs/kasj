@@ -1,12 +1,15 @@
 <template>
   <div id="app">
   <nav-header>众彩物流</nav-header>
-    <router-view/>
+    <keep-alive include="destination，everydayMain">
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import NavHeader from "@/components/header/navheader"
+import axios from "axios"
 
 export default {
   name: 'App',

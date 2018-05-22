@@ -8,6 +8,7 @@ import hsMain from "@/components/hs/hsMain"
 import hsDetail from "@/components/hs/hsDetail"
 import hsSearch from "@/components/hs/hsSearch"
 import lbsAmap from "@/components/map/lbsAmap"
+import lbsAmap2 from "@/components/map/lbsAmap2"
 
 
 Vue.use(Router)
@@ -15,12 +16,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/zcwlMain/dailyPrice',
+      path: '/',
       name: 'dailyPrice',
       component: dailyPrice,
     },
     {
-      path: '/zcwlMain/everydayMain',
+      path: '/everydayMain',
       name: 'everydayMain',
       component: everydayMain
     },
@@ -30,7 +31,7 @@ export default new Router({
       component:priceChart
     },
     {
-      path:'/zcwl/NewsDetail/:id',
+      path:'/zcwl/NewsDetail',
       name:'NewsDetail',
       component:NewsDetail
     },
@@ -53,6 +54,11 @@ export default new Router({
       path:'/map/lbsAmap',
       name:'lbsAmap',
       component:lbsAmap
+    },
+    {
+      path:'/map/lbsAmap2',
+      name:'lbsAmap2',
+      component:lbsAmap2
     },
   ]
 })

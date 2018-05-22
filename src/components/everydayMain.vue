@@ -1,85 +1,99 @@
 <template>
   <div class="edm">
     <div class="changeTime">
-      更新日期：2018年5月14日
+      更新日期：{{upTime}}
     </div>
     <div class="changePage">
-      <router-link to="dailyPrice" >每日价格</router-link>
-      <router-link to="everydayMain" class="page_active" >每日一品</router-link>
+      <router-link to="/">每日价格</router-link>
+      <router-link to="everydayMain" class="page_active">每日一品</router-link>
     </div>
     <ul class="NewsList">
-      <li @click="toNews('123')">
+      <li @click="toNews(item.htmlContent)" v-for="item in list">
         <div class="NewLeft">
           <h2>
-            雪停了，菜价也降了
+            {{item.sourceLabel}}
           </h2>
-          <p>
-            距离降雪已经过去了4天，降雪带来的一些影响正在逐渐 减小，蔬菜市场的运营也在逐渐回归正常。根据市场...
-          </p>
           <span>
-            2018-5-14
+            {{editTime(item.createTime)}}
           </span>
         </div>
-        <img src="./../../static/img/testimg.jpg" alt="">
-      </li>
-      <li>
-        <div class="NewLeft">
-          <h2>
-            雪停了，菜价也降了
-          </h2>
-          <p>
-            距离降雪已经过去了4天，降雪带来的一些影响正在逐渐 减小，蔬菜市场的运营也在逐渐回归正常。根据市场...
-          </p>
-          <span>
-            2018-5-14
-          </span>
-        </div>
-        <img src="./../../static/img/testimg.jpg" alt="">
-      </li>
-      <li>
-        <div class="NewLeft">
-          <h2>
-            雪停了，菜价也降了
-          </h2>
-          <p>
-            距离降雪已经过去了4天，降雪带来的一些影响正在逐渐 减小，蔬菜市场的运营也在逐渐回归正常。根据市场...
-          </p>
-          <span>
-            2018-5-14
-          </span>
-        </div>
-        <img src="./../../static/img/testimg.jpg" alt="">
+        <img :src=item.cover alt="">
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "everydayMain",
-      methods:{
-        toNews(id){
-          this.$router.push({ path: `/zcwl/NewsDetail/${id}`});
-        }
+  import axios from "axios"
+  export default {
+    name: "everydayMain",
+    data() {
+      return {
+        list: [],
+        upTime:"",
       }
+    },
+    methods: {
+      toNews(htmlContent) {
+        this.$router.push({name: "NewsDetail",params:{htmlContent:htmlContent}});
+      },
+      //时间转换
+      editTime(time) {
+        var now = new Date(time);
+        //	return now;
+        return now.getFullYear() + "-" + this.fix((now.getMonth() + 1), 2) + "-" + this.fix(now.getDate(), 2);
+      },
+      //将日期格式化为两位，不足补零
+      fix(num, length) {
+        return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+      },
+      //将日期格式化
+      editDate() {
+        var myDate = new Date();
+        var mytime = myDate.toLocaleTimeString();
+        var a = mytime.split(":");
+        var times = a[0] * 60 * 60 * 1000 + a[1] * 60 * 1000 + a[2] * 1000;
+        alert(times);
+      }
+    },
+    mounted() {
+      let data ={
+        "catalogId": "3",
+        "sourceType":'03',
+        "pageNo": 1,
+        "pageSize": 20,
+        "queryParams": []
+      }
+      axios.post('/web-editor-web//public/catalog/querySource.do', "catalogId=3&sourceType=03&pageNo=1&pageSize=20")
+        .then((response) => {
+          this.list = response.data.data;
+          this.upTime = this.editTime(this.list[0].createTime);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
+  }
 </script>
 
 <style scoped>
-  .edm{
+  .edm {
     margin-top: 96px;
   }
-  .content{
+
+  .content {
     background-color: #fff;
   }
-  .changePage{
+
+  .changePage {
     text-align: center;
     width: 100%;
-    border-bottom:1px solid #EEEEEE ;
+    border-bottom: 1px solid #EEEEEE;
     background: #fff;
     border-bottom: 20px solid #F5F5F5;
   }
-  .changePage a{
+
+  .changePage a {
     float: left;
     text-align: center;
     width: 50%;
@@ -88,33 +102,38 @@
     font-size: 30px;
     color: #333;
   }
-  .changePage a.page_active{
+
+  .changePage a.page_active {
     color: #4D7BFE;
     border-bottom: 5px solid #4D7BFE;
   }
-  .changePage::after{
+
+  .changePage::after {
     content: "";
     clear: both;
     display: table;
   }
+
   /*主题*/
-  .content{
+  .content {
     border-top: 20px solid #F5F5F5;
   }
 
-  .changeTime{
-    height:72px;
-    background:rgba(255,247,234,1);
-    font-size:28px;
-    font-family:PingFangSC-Regular;
-    color:rgba(255,185,74,1);
-    line-height:72px;
+  .changeTime {
+    height: 72px;
+    background: rgba(255, 247, 234, 1);
+    font-size: 28px;
+    font-family: PingFangSC-Regular;
+    color: rgba(255, 185, 74, 1);
+    line-height: 72px;
     padding-left: 32px;
   }
-  .NewsList{
+
+  .NewsList {
     padding: 0 20px;
   }
-  .NewsList li{
+
+  .NewsList li {
     padding: 20px 0;
     height: 192px;
     box-sizing: border-box;
@@ -123,44 +142,49 @@
     align-items: center;
     border-bottom: 1px solid #EEEEEE;
   }
-  .NewsList li img{
-    width:120px;
-    height:120px;
+
+  .NewsList li img {
+    width: 120px;
+    height: 120px;
     display: inline-block;
   }
-  .NewLeft{
+
+  .NewLeft {
     display: inline-block;
   }
-  .NewLeft h2{
-    height:42px;
-    font-size:30px;
-    font-family:PingFangSC-Regular;
-    color:rgba(51,51,51,1);
-    width:542px;
+
+  .NewLeft h2 {
+    height: 42px;
+    font-size: 30px;
+    font-family: PingFangSC-Regular;
+    color: rgba(51, 51, 51, 1);
+    width: 542px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .NewLeft p{
-    height:68px;
-    font-size:22px;
-    font-family:PingFangSC-Regular;
-    color:rgba(153,153,153,1);
-    line-height:34px;
+
+  .NewLeft p {
+    height: 68px;
+    font-size: 22px;
+    font-family: PingFangSC-Regular;
+    color: rgba(153, 153, 153, 1);
+    line-height: 34px;
     margin-top: 7px;
-    width:542px;
-    overflow: hidden;/*超出部分隐藏*/
+    width: 542px;
+    overflow: hidden; /*超出部分隐藏*/
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-  .NewLeft span{
+
+  .NewLeft span {
     display: block;
     height: 28px;
-    font-size:20px;
-    font-family:PingFangSC-Regular;
-    color:rgba(153,153,153,1);
-    line-height:28px;
+    font-size: 20px;
+    font-family: PingFangSC-Regular;
+    color: rgba(153, 153, 153, 1);
+    line-height: 28px;
     margin-top: 7px;
   }
 </style>

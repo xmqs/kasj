@@ -17,7 +17,7 @@
   import $ from "jquery"
   import VueAMap from 'vue-amap'
     export default {
-      name: "lbsAmap",
+      name: "lbsAmap2",
       data: function() {
         return {
           zoom: 12,
@@ -46,14 +46,22 @@
 
               this.amapManager.getMap().clearMap();
 
-              let driving = new AMap.Driving({
+              /*let driving = new AMap.Driving({
                 map: this.amapManager.getMap(),
                 extensions:"all",
                 panel:"panel"
               });
               // 根据起终点经纬度规划驾车导航路线 目前以南京禄口机场为终点
-              driving.search(new AMap.LngLat(this.fromLocation[0], this.fromLocation[1]), new AMap.LngLat(118.873171, 31.731089 ),(status,DrivingResult )=>{
-                console.log(DrivingResult);
+              driving.search(new AMap.LngLat(this.fromLocation[0], this.fromLocation[1]), new AMap.LngLat(118.873171, 31.731089 ));*/
+              let transfer = new AMap.Transfer({
+                map: this.amapManager.getMap(),
+                panel: 'panel',
+                city:'南京市'
+              });
+              //根据起、终点坐标查询公交换乘路线
+              transfer.search(new AMap.LngLat(this.fromLocation[0], this.fromLocation[1]), new AMap.LngLat(118.873171, 31.731089 ),
+                function(status,TransferResult ){
+                  console.log(TransferResult);
               });
 
             }

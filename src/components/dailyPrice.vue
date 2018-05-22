@@ -1,10 +1,10 @@
 <template>
   <div class="dailyPrice">
     <div class="changeTime">
-      更新日期：2018年5月14日
+      更新日期：{{upTime}}
     </div>
     <div class="changePage">
-      <router-link to="dailyPrice" class="page_active" >每日价格</router-link>
+      <router-link to="/" class="page_active" >每日价格</router-link>
       <router-link to="everydayMain" >每日一品</router-link>
     </div>
     <ul class="PriceList">
@@ -15,215 +15,78 @@
         <span>最高价</span>
         <span>平均价</span>
       </li>
-      <li @click="toChart('青菜')">
+      <li @click="toChart('+{{item.name}}+')" v-for="item in list">
+        <span class="Pname">{{item.name}}</span>
+        <span class="Pplace">{{item.from}}</span>
+        <span class="Lprice">{{item.Lprice}}</span>
+        <span class="Tprice">{{item.Tprice}}</span>
+        <span class="Aprice">{{item.Aprice}}</span>
+      </li>
+      <!--<li @click="toChart('青菜')">
         <span class="Pname">青菜</span>
         <span class="Pplace">南京</span>
         <span class="Lprice">4.4元</span>
         <span class="Tprice">6元</span>
         <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
-      <li>
-        <span class="Pname">青菜</span>
-        <span class="Pplace">南京</span>
-        <span class="Lprice">4.4元</span>
-        <span class="Tprice">6元</span>
-        <span class="Aprice">5.2元</span>
-      </li>
+      </li>-->
     </ul>
   </div>
 </template>
 
 <script>
+  import axios from "axios"
   export default {
     name: "destination",
     data(){
       return{
+        list:[],
+        upTime:"",
       }
     },
     mounted(){
+      axios.post('/web-editor-web//public/source/props/query.do', {
+        catalogId: "2",
+        pageNo: 1,
+        pageSize: 100,
+        queryParams: []
+      })
+        .then((response)=> {
+          let res = response.data.data;
+          for(let i = 0;i<res.length;i++){
+            let item = {
+              name: res[i].sourceLabel,
+              from: "暂无",
+            }
 
+            for(let j = 0;j<res[i].properties.length;j++){
+              if(res[i].properties[j].rowKey == "minPrice"){
+                item.Lprice = parseFloat(res[i].properties[j].rowValue).toFixed(2);
+              }
+              if(res[i].properties[j].rowKey == "maxPrice"){
+                item.Tprice = parseFloat(res[i].properties[j].rowValue).toFixed(2);
+              }
+              if(res[i].properties[j].rowKey == "averPrice"){
+                item.Aprice = parseFloat(res[i].properties[j].rowValue).toFixed(2);
+              }
+              if(res[i].properties[j].rowKey == "tradeDate"){
+                this.upTime = res[i].properties[j].rowValue;
+              }
+            }
+            if(!item.Lprice){
+              item.Lprice = "暂无"
+            }
+            if(!item.Tprice){
+              item.Tprice = "暂无"
+            }
+            if(!item.Aprice){
+              item.Aprice = "暂无"
+            }
+            this.list.push(item);
+          }
+        })
+        .catch((error)=>{
+          console.log(error);
+        });
     },
     methods:{
       toChart(id){
@@ -292,6 +155,10 @@
   }
   .PriceList{
   }
+  .PriceList span{
+    width: 19%;
+    text-align: center;
+  }
   .PriceList li{
     border-bottom: 1px solid #eee;
     height: 88px;
@@ -303,10 +170,6 @@
     font-size:28px;
     font-family:PingFangSC-Regular;
     color:rgba(153,153,153,1);
-  }
-  .PriceHeader span{
-    display: inline-flex;
-
   }
   .Pname{
     font-size:30px;
