@@ -9,12 +9,14 @@ import hsDetail from "@/components/hs/hsDetail"
 import hsSearch from "@/components/hs/hsSearch"
 import lbsAmap from "@/components/map/lbsAmap"
 import lbsAmap2 from "@/components/map/lbsAmap2"
+import datePicker from "@/components/date/datePick"
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    //众彩物流
     {
       path: '/',
       name: 'dailyPrice',
@@ -35,6 +37,7 @@ export default new Router({
       name:'NewsDetail',
       component:NewsDetail
     },
+    //hs编码查询
     {
       path:'/hs/hsMain',
       name:'hsMain',
@@ -50,6 +53,7 @@ export default new Router({
       name:'hsSearch',
       component:hsSearch
     },
+    //高德地图
     {
       path:'/map/lbsAmap',
       name:'lbsAmap',
@@ -60,5 +64,11 @@ export default new Router({
       name:'lbsAmap2',
       component:lbsAmap2
     },
+    //时间控件
+    {
+      path:'/date/datePicker',
+      name:'datePicker',
+      component:datePicker
+    }
   ]
 })

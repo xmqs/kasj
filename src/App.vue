@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-  <nav-header>众彩物流</nav-header>
-    <keep-alive include="destination，everydayMain">
-      <router-view/>
-    </keep-alive>
+  <!--<nav-header>众彩物流</nav-header>-->
+    <router-view/>
   </div>
 </template>
 
