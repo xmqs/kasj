@@ -12,6 +12,7 @@ import lbsAmap2 from "@/components/map/lbsAmap2"
 import datePicker from "@/components/date/datePick"
 
 
+
 Vue.use(Router)
 
 export default new Router({

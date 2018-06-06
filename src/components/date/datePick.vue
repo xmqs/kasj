@@ -13,12 +13,12 @@
         </ul>
       </li>
     </div>
-   <div class="picker swiper-container swiper-container-vertical" v-on:touchstart="startscroll" v-on:touchmove="scroll" v-on:touchend="scrollend">
-      <div class="swiper-wrapper" v-bind:style="{ transitionDuration:0, transform: 'translate(0px,'+touch+'px)' }" v-bind:class="{time:time}" ref="wrapper">
-      <ul class="swiper-slide" v-for="(month,index1) in monthlist">
+   <div class="picker container container-vertical" v-on:touchstart="startscroll" v-on:touchmove="scroll" v-on:touchend="scrollend">
+      <div class="wrapper" v-bind:style="{ transitionDuration:0, transform: 'translate(0px,'+touch+'px)',webkitTransform: 'translate(0px,'+touch+'px)' }" v-bind:class="{time:time}" ref="wrapper">
+      <ul class="slide" v-for="(month,index1) in monthlist">
         {{list[index1][0]}}年{{list[index1][1]}}月
         <ul v-for="(week,index2) in month" class="first_row">
-          <li v-for="(day,index3) in week" v-bind:class="{'preday':pred(index2,day),'nextday':nextd(index2,day),'untap':untap(index1,index2,day),'istoday':istodya(index1,index2,day)}" v-on:touchstart="test3(index1,index2,day)">{{day}}</li>
+          <li v-for="(day,index3) in week" v-bind:class="{'preday':pred(index2,day),'nextday':nextd(index2,day),'untap':untap(index1,index2,day),'istoday':istodya(index1,index2,day),'active':((list[index1][0]>lyear||list[index1][1]>lmonth)||(list[index1][0]==lyear&&list[index1][1]==lmonth&&day>=lday))&&(list[index1][0]==ayear&&list[index1][1]==amonth&&day==aday&&(((index2 <= 1 && day <= 14)&&!(index2 >= 3 && day > 14))||index2 == 2||((index2 >= 3 && day > 14)&&!(index2 <= 1 && day < 7))))}" v-on:touchend="test3(index1,index2,day)" v-on:touchstart="test5" v-on:touchmove="test4">{{day}}</li>
         </ul>
       </ul>
       </div>
@@ -55,9 +55,23 @@
             year:0,
             month:0,
             day:0,
+            //今天日期
             ryear:0,
             rmonth:0,
-            rday:0
+            rday:0,
+            //点击状态 判断tap事件
+            tapstaic:0,
+            //tap li层判断
+            tapSY:0,
+            tapEY:0,
+            //点击日期存储
+            ayear:0,
+            amonth:0,
+            aday:0,
+            //时间界限
+            lyear:0,
+            lmonth:0,
+            lday:0,
           }
       },
       created(){
@@ -69,6 +83,10 @@
         this.ryear = date.getFullYear();
         this.rmonth = date.getMonth()+1;
         this.rday = date.getDate()
+
+        this.lyear = date.getFullYear();
+        this.lmonth = date.getMonth()+1;
+        this.lday = date.getDate()
 
 
         this.monthlist = this.createMonthList(this.year,this.month);
@@ -83,6 +101,13 @@
             this.endY = -this.page*this.realH+this.d;
           },10)
       },
+     /* computed:{
+        isactive:function(y,m,d){
+          if(y == this.ayear&&m == this.amonth&&d == this.aday){
+            return true;
+          }
+        }
+      },*/
       methods:{
         createMonthList(y,m){
           let month = [];
@@ -162,15 +187,39 @@
           }
         },
         test3(index1,index2,day){
-          if(index2 == 0&&day > 7){
-            console.log(this.list[index1][0]+"年"+this.list[index1-1][1]+"月"+day+"日");
-          }else if(index2 > 3 && day < 14){
-            console.log(this.list[index1][0]+"年"+this.list[index1+1][1]+"月"+day+"日");
-          }else {
-            console.log(this.list[index1][0] + "年" + this.list[index1][1] + "月" + day+"日");
+          console.log()
+          let l = Math.abs(this.tapEY - this.tapSY);
+          if((this.tapstaic < 1) || (this.tapstaic < 6 && l<10)){
+            //点击事件
+            if(index2 == 0&&day > 7){
+              this.ayear = this.list[index1][0];
+              this.amonth = this.list[index1-1][1];
+              this.aday = day
+              //alert(this.list[index1][0]+"年"+this.list[index1-1][1]+"月"+day+"日");
+            }else if(index2 > 3 && day < 14){
+              this.ayear = this.list[index1][0];
+              this.amonth = this.list[index1+1][1];
+              this.aday = day
+              //alert(this.list[index1][0]+"年"+this.list[index1+1][1]+"月"+day+"日");
+            }else {
+              this.ayear = this.list[index1][0];
+              this.amonth = this.list[index1][1];
+              this.aday = day
+              //alert(this.list[index1][0] + "年" + this.list[index1][1] + "月" + day+"日");
+            }
           }
+          this.tapstaic = 0;
+          this.tapEY = 0;
+          this.tapSY = 0;
         },
-
+        test4(e){
+          this.tapstaic++;
+          this.tapEY = event.changedTouches[0].clientY;
+        },
+        test5(e){
+          this.tapSY = event.changedTouches[0].clientY;
+          this.tapstaic = 0;
+        },
         startscroll(e){
           e.preventDefault();
           if(this.time){
@@ -331,6 +380,9 @@
 </script>
 
 <style scoped>
+  *{
+    -webkit-overflow-scrolling: touch;
+  }
   .picker_header{
     display: flex;
     justify-content: space-around;
@@ -351,21 +403,21 @@
     text-align: center;
     font-size: 40px;
   }
-  .swiper-container {
+  .container {
     margin-left: auto;
     margin-right: auto;
     position: relative;
     overflow: hidden;
     z-index: 1;
   }
-  .swiper-container-vertical>.swiper-wrapper {
+  .container-vertical>.wrapper {
     -webkit-box-orient: vertical;
     -moz-box-orient: vertical;
     -ms-flex-direction: column;
     -webkit-flex-direction: column;
     flex-direction: column;
   }
-  .swiper-wrapper {
+  .wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -384,7 +436,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
   }
-  .swiper-slide {
+  .slide {
     -webkit-flex-shrink: 0;
     -ms-flex: 0 0 auto;
     flex-shrink: 0;
@@ -395,6 +447,9 @@
   }
   .time{
     transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -webkit-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
   }
   .year_month{
     position: fixed;
@@ -416,5 +471,9 @@
   }
   .istoday{
     color: #0d9bf2;
+  }
+  .active{
+    color: #fff!important;
+    background: #0d9bf2;
   }
 </style>
