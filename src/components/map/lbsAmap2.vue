@@ -14,7 +14,6 @@
 </template>
 
 <script>
-  import $ from "jquery"
   import VueAMap from 'vue-amap'
     export default {
       name: "lbsAmap2",

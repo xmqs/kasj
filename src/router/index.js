@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import dailyPrice from "@/components/dailyPrice"
-import everydayMain from "@/components/everydayMain"
-import priceChart from "@/components/priceChart"
-import NewsDetail from "@/components/NewsDetail"
-import hsMain from "@/components/hs/hsMain"
-import hsDetail from "@/components/hs/hsDetail"
-import hsSearch from "@/components/hs/hsSearch"
-import lbsAmap from "@/components/map/lbsAmap"
-import lbsAmap2 from "@/components/map/lbsAmap2"
-import datePicker from "@/components/date/datePick"
+
+const dailyPrice = () => import ("../components/dailyPrice")
+const everydayMain = () => import  ("../components/everydayMain")
+const priceChart = () => import  ("../components/priceChart")
+const NewsDetail = () => import  ("../components/NewsDetail")
+const hsMain = () => import  ("../components/hs/hsMain")
+const hsDetail = () => import  ("../components/hs/hsDetail")
+const hsSearch = () => import  ("../components/hs/hsSearch")
+const lbsAmap = () => import  ("../components/map/lbsAmap")
+const lbsAmap2 = () => import  ("../components/map/lbsAmap2")
+const datePicker = () => import  ("../components/date/datePick")
 
 
 
