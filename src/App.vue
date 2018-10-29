@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-  <!--<nav-header>众彩物流</nav-header>-->
-    <router-view/>
+    <keep-alive>
+      <router-view  v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive">
+    </router-view>
   </div>
 </template>
 
 <script>
-import NavHeader from "@/components/header/navheader"
-import axios from "axios"
 
 export default {
   name: 'App',
-  components:{
-    NavHeader
+  computed:{
+    includedComponents:state=>state.includedComponents,
+    excludedComponents:state=>state.excludedComponents
   }
 }
 </script>

@@ -1,76 +1,118 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const dailyPrice = () => import ("../components/dailyPrice")
-const everydayMain = () => import  ("../components/everydayMain")
-const priceChart = () => import  ("../components/priceChart")
-const NewsDetail = () => import  ("../components/NewsDetail")
-const hsMain = () => import  ("../components/hs/hsMain")
-const hsDetail = () => import  ("../components/hs/hsDetail")
-const hsSearch = () => import  ("../components/hs/hsSearch")
-const lbsAmap = () => import  ("../components/map/lbsAmap")
-const lbsAmap2 = () => import  ("../components/map/lbsAmap2")
-const datePicker = () => import  ("../components/date/datePick")
 
+import homeList from "../components/data/homeList"
+import searchList from "../components/data/searchList"
+import shsearchList from "../components/data/shsearchList"
+import dataList from "../components/data/dataList"
+import shList from "../components/data/shList"
+import shDetail from "../components/data/shDetail"
 
+import manual from "../components/manual/index"
+import manual2 from "../components/manual/manual2"
+import record from "../components/manual/record"
+import question from "../components/manual/question"
+import squestion from "../components/manual/searchQuestion"
+import park from "../components/manual/park"
+import parkDetail from "../components/manual/parkDetail"
+import planeManual from "../components/manual/planeManual"
+
+import list2 from "../components/manual/list2"
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    //众彩物流
     {
       path: '/',
-      name: 'dailyPrice',
-      component: dailyPrice,
+      name: 'homeList',
+      component: homeList,
     },
     {
-      path: '/everydayMain',
-      name: 'everydayMain',
-      component: everydayMain
+      path: '/searchList/:type',
+      name: 'searchList',
+      component: searchList,
+      meta:{
+        keepAlive:true
+      }
     },
     {
-      path:'/zcwl/priceChart/:id',
-      name:'priceChart',
-      component:priceChart
+      path: '/shsearchList',
+      name: 'shsearchList',
+      component: shsearchList,
+      meta:{
+        keepAlive:true
+      }
     },
     {
-      path:'/zcwl/NewsDetail',
-      name:'NewsDetail',
-      component:NewsDetail
-    },
-    //hs编码查询
-    {
-      path:'/hs/hsMain',
-      name:'hsMain',
-      component:hsMain
+      path: '/dataList/:key',
+      name: 'dataList',
+      component: dataList,
     },
     {
-      path:'/hs/hsDetail',
-      name:'hsDetail',
-      component:hsDetail
+      path: '/shList',
+      name: 'shList',
+      component: shList,
+      meta:{
+        keepAlive:true
+      }
     },
     {
-      path:'/hs/hsSearch',
-      name:'hsSearch',
-      component:hsSearch
-    },
-    //高德地图
-    {
-      path:'/map/lbsAmap',
-      name:'lbsAmap',
-      component:lbsAmap
+      path: '/shDetail/:code',
+      name: 'shDetail',
+      component: shDetail,
     },
     {
-      path:'/map/lbsAmap2',
-      name:'lbsAmap2',
-      component:lbsAmap2
+      path: '/manual',
+      name: 'manual',
+      component: manual,
     },
-    //时间控件
     {
-      path:'/date/datePicker',
-      name:'datePicker',
-      component:datePicker
-    }
+      path: '/manual2',
+      name: 'manual2',
+      component: manual2,
+    },
+    {
+      path: '/record',
+      name: 'record',
+      component: record,
+    },
+    {
+      path: '/question',
+      name: 'question',
+      component: question,
+    },
+    {
+      path: '/squestion',
+      name: 'squestion',
+      component: squestion,
+    },
+    {
+      path: '/park',
+      name: 'park',
+      component: park,
+    },
+    {
+      path: '/parkDetail/:id',
+      name: 'parkDetail',
+      component: parkDetail,
+    },
+    {
+      path: '/planeManual',
+      name: 'planeManual',
+      component: planeManual,
+      mate:{
+        keepAlive:true
+      }
+    },
+    {
+      path: '/list2',
+      name: 'list2',
+      component: list2,
+      mate:{
+        keepAlive:true
+      }
+    },
   ]
 })

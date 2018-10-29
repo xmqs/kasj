@@ -1,7 +1,7 @@
 {
-  "name": "zcwl",
+  "name": "kanzd",
   "version": "1.0.0",
-  "description": "众彩物流",
+  "description": "数据字典",
   "author": "wyx <469699659@qq.com>",
   "private": true,
   "scripts": {
@@ -12,17 +12,18 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cssnano": "^3.10.0",
-    "highcharts": "^6.1.0",
     "jquery": "^3.3.1",
+    "mescroll.js": "^1.3.5",
     "postcss-aspect-ratio-mini": "0.0.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-px-to-viewport": "0.0.3",
     "postcss-viewport-units": "^0.1.4",
     "postcss-write-svg": "^3.0.1",
-    "swiper": "^4.2.6",
+    "swiper": "^4.3.5",
     "vue": "^2.5.2",
     "vue-amap": "^0.5.6",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
